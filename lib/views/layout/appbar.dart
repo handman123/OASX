@@ -19,7 +19,7 @@ PreferredSizeWidget buildPlatformAppBar(
         isCollapsed: isCollapsed,
       ),
     PlatformType.linux => _desktopAppbar(),
-    PlatformType.macOS => _desktopAppbar(),
+    PlatformType.macOS => _macosAppbar(),
     PlatformType.android => _mobileTabletAppbar(),
     PlatformType.iOS => _mobileTabletAppbar(),
     PlatformType.web => _webAppbar(),
@@ -50,6 +50,16 @@ PreferredSizeWidget _windowAppbar(BuildContext context, {bool? isCollapsed}) {
 
 PreferredSizeWidget _desktopAppbar() {
   return AppBar(title: getTitle());
+}
+
+PreferredSizeWidget _macosAppbar() {
+  return AppBar(
+    automaticallyImplyLeading: false,
+    title: getTitle(),
+    titleSpacing: 0,
+    leading: const SizedBox(width: 74),
+    leadingWidth: 74,
+  );
 }
 
 PreferredSizeWidget _webAppbar() {
